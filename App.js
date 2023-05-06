@@ -101,10 +101,10 @@ const styles = StyleSheet.create({
     paddingVertical: 1,
     paddingHorizontal: 4,
     flex: 1,
-    backgroundColor: 'gray',
-    marginTop: 630,
+    backgroundColor: 'black',
+    marginBottom: 630,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'brown',
     borderStyle: 'solid',
   },
   menuButton: {
