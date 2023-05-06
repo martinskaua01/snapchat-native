@@ -1,81 +1,48 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import Constants from 'expo-constants';
+import { View, Text} from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
 function TelaA({ navigation }) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('TelaB')}
-      >
-        <Text style={styles.buttonText}>Pressione-me</Text>
-      </TouchableOpacity>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={styles.paragraph}>
+      TelaA
+      </Text>   
     </View>
   );
 }
 
 function TelaB({ navigation }) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('TelaC')}
-      >
-        <Text style={styles.buttonText}>Pressione-me</Text>
-      </TouchableOpacity>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={styles.paragraph}>
+      TelaB
+      </Text>    
     </View>
   );
 }
 
-function TelaC() {
+function TelaC({ navigation }) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Pressione-me</Text>
-      </TouchableOpacity>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={styles.paragraph}>
+      TelaC
+      </Text>   
     </View>
   );
 }
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="TelaA" component={TelaA} />
-        <Stack.Screen name="TelaB" component={TelaB} />
-        <Stack.Screen name="TelaC" component={TelaC} />
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="TelaA">
+        <Drawer.Screen name="TelaA" component={TelaA} />
+        <Drawer.Screen name="TelaB" component={TelaB} />
+        <Drawer.Screen name="Telac" component={TelaC} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-  button: {
-    alignSelf: 'center',
-    backgroundColor: 'blue',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 10,
-    marginTop: 24,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});
